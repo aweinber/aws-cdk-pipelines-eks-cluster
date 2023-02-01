@@ -17,7 +17,7 @@ export class EksPipelineStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, "Pipeline", {
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub(
-          "aws-samples/aws-cdk-pipelines-eks-cluster",
+          "aweinber/aws-cdk-pipelines-eks-cluster",
           "main",
           {
             authentication:
@@ -37,7 +37,7 @@ export class EksPipelineStack extends cdk.Stack {
       nameSuffix: clusterANameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION,
+        region: "us-east-2",
       },
     });
 
@@ -46,7 +46,7 @@ export class EksPipelineStack extends cdk.Stack {
       nameSuffix: clusterBNameSuffix,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION,
+        region: "us-east-2",
       },
     });
 
@@ -83,7 +83,7 @@ export class EksPipelineStack extends cdk.Stack {
       envName: prodEnv,
       env: {
         account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION,
+        region: "us-east-2",
       },
     });
 
